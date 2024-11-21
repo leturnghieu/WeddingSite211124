@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scroll Animation</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <section class="page page-1">Page 1</section>
@@ -20,7 +22,33 @@
     <div class="indicator" data-page="2">3</div>
     <div class="indicator" data-page="3">4</div>
   </div>
-  
+
+  <!-- Nút xác nhận -->
+  <div class="confirm-button">
+    <button id="openForm">Xác nhận tham gia</button>
+  </div>
+
+  <!-- Form xác nhận -->
+  <div class="confirmation-form hidden">
+    <div class="form-content">
+      <h2>Xác nhận tham gia tiệc cưới của chúng tôi</h2>
+      <p>Vui lòng nhập thông tin của bạn nhé:</p>
+      <input type="text" placeholder="Họ và tên" id="nameInput">
+      <input type="text" placeholder="Số điện thoại" id="phoneNumberInput">
+      <button id="submitForm">Gửi</button>
+      <button id="closeForm">Đóng</button>
+    </div>
+  </div>
+
+  <div class="thank-you-form hidden">
+    <div class="form-content">
+      <h2>Cảm ơn!</h2>
+      <p>Cảm ơn bạn đã xác nhận tham gia. Chúng tôi sẽ liên hệ với bạn sớm nhất!</p>
+      <button id="closeThankYouForm">Đóng</button>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
+
 </html>

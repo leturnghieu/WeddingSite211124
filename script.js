@@ -98,23 +98,83 @@ indicators.forEach((indicator) => {
 updateIndicators();
 
 function showNextPage() {
-    if (currentPage < pages.length - 1) {
-      pages[currentPage].classList.add('hidden');
-      currentPage++;
-      pages[currentPage].classList.remove('hidden');
-      pages[currentPage].classList.add('visible');
-      updateIndicators(); // Đồng bộ thanh chỉ số
-    }
+  if (currentPage < pages.length - 1) {
+    pages[currentPage].classList.add('hidden');
+    currentPage++;
+    pages[currentPage].classList.remove('hidden');
+    pages[currentPage].classList.add('visible');
+    updateIndicators(); // Đồng bộ thanh chỉ số
   }
-  
-  function showPreviousPage() {
-    if (currentPage > 0) {
-      pages[currentPage].classList.remove('visible');
-      pages[currentPage].classList.add('hidden');
-      currentPage--;
-      pages[currentPage].classList.remove('hidden');
-      pages[currentPage].classList.add('visible');
-      updateIndicators(); // Đồng bộ thanh chỉ số
-    }
+}
+
+function showPreviousPage() {
+  if (currentPage > 0) {
+    pages[currentPage].classList.remove('visible');
+    pages[currentPage].classList.add('hidden');
+    currentPage--;
+    pages[currentPage].classList.remove('hidden');
+    pages[currentPage].classList.add('visible');
+    updateIndicators(); // Đồng bộ thanh chỉ số
   }
-  
+}
+
+//xử lý button và form nhập
+
+// Lấy các phần tử
+const openFormButton = document.getElementById('openForm');
+const closeFormButton = document.getElementById('closeForm');
+const submitFormButton = document.getElementById('submitForm');
+const confirmationForm = document.querySelector('.confirmation-form');
+const nameInput = document.getElementById('nameInput');
+const phoneNumberInput = document.getElementById('phoneNumberInput');
+const thankYouForm = document.querySelector('.thank-you-form');
+const closeThankYouButton = document.getElementById('closeThankYouForm');
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzGyCFsehgIANdHdfWIqIwRzgNG4D17DR6G6fQkv-mNdnQQStMwcS5wXpu0SnqIblmd/exec'
+
+// Hiển thị form
+openFormButton.addEventListener('click', () => {
+  confirmationForm.classList.remove('hidden');
+});
+
+// Đóng form
+closeFormButton.addEventListener('click', () => {
+  confirmationForm.classList.add('hidden');
+});
+
+closeThankYouButton.addEventListener('click', () => {
+  thankYouForm.classList.add('hidden');
+})
+
+// Xử lý khi nhấn Gửi
+submitFormButton.addEventListener('click', () => {
+  const name = nameInput.value.trim();
+  const phone = phoneNumberInput.value.trim();
+
+  if (name && phone) {
+    // Gửi dữ liệu tới Google Apps Script
+    fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify({ name, phone }),
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors'
+    }).then(() => {
+        
+          // Ẩn form xác nhận và hiển thị form cảm ơn
+          confirmationForm.classList.add('hidden');
+          thankYouForm.classList.remove('hidden');
+
+          // Xóa dữ liệu trong input
+          nameInput.value = '';
+          phoneNumberInput.value = '';
+        }
+      )
+      .catch((error) => {
+        alert('Không thể gửi dữ liệu. Vui lòng kiểm tra lại!');
+        console.error('Error:', error);
+      });
+  } else {
+    alert('Vui lòng nhập đầy đủ họ tên và số điện thoại!');
+  }
+});
+

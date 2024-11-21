@@ -78,3 +78,176 @@
 .indicator:hover {
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+/* Nút xác nhận ở góc phải dưới */
+.confirm-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.confirm-button button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #c25acf;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button button:hover {
+  background-color: #e55b50;
+}
+
+/* Form xác nhận */
+.confirmation-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.confirmation-form.hidden {
+  display: none;
+}
+
+.form-content {
+  text-align: center;
+}
+
+.form-content h2 {
+  margin-bottom: 10px;
+}
+
+.form-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-content button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submitForm {
+  background-color: #6fcf97;
+  color: #fff;
+}
+
+#closeForm {
+  background-color: #bb6bd9;
+  color: #fff;
+}
+
+#submitForm:hover {
+  background-color: #56ccf2;
+}
+
+#closeForm:hover {
+  background-color: #9a51c9;
+}
+
+/*Hiệu ứng nhấp nháy của button*/
+
+/* Hiệu ứng nhấp nháy */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 111, 97, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+  }
+}
+
+/* Hiệu ứng rung */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+/* Áp dụng hiệu ứng nhấp nháy */
+.confirm-button button {
+  animation: pulse 2s infinite;
+}
+
+/* Thêm hiệu ứng rung khi hover */
+.confirm-button button:hover {
+  animation: shake 0.5s;
+  background-color: #e55b50; /* Màu sắc khi hover */
+}
+
+/* Form cảm ơn */
+.thank-you-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px;
+  text-align: center;
+}
+
+.thank-you-form.hidden {
+  display: none;
+}
+
+.thank-you-form h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #6fcf97;
+}
+
+.thank-you-form p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.thank-you-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #6fcf97;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.thank-you-form button:hover {
+  background-color: #56ccf2;
+}
