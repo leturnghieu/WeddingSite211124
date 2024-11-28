@@ -1,51 +1,157 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-  }
-  
-  .page {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fff;
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-  }
-  
-  .page-1 { background-color: #ff6f61; }
-  .page-2 { background-color: #6fcf97; }
-  .page-3 { background-color: #56ccf2; }
-  .page-4 { background-color: #bb6bd9; }
-  
-  .hidden {
-    transform: translateY(100%);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Dancing Script', cursive;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.page-1 img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.page-1 .title {
+  position: relative;
+  z-index: 2;
+  display: flex;
+}
+
+.title p {
+  font-size: 75px;
+}
+
+.title .husband {
+  animation: moveFromLeft 4s forwards;
+}
+
+.title .heart {
+  animation: fadeIn 4s forwards;
+  animation: heartbeat 1s infinite;
+}
+
+
+.title .wife {
+  animation: moveFromRight 4s forwards
+}
+
+@keyframes moveFromLeft {
+  from {
+    transform: translateX(-100%);
     opacity: 0;
   }
-  
-  .visible {
-    transform: translateY(0);
+
+  to {
+    transform: translateX(0);
     opacity: 1;
   }
+}
 
-  /* Thanh chỉ số page */
+@keyframes moveFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+@keyframes  v {
+  0% {
+    top: -100px;
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+.page-2 img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.page-3 img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.page-4 img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Thanh chỉ số page */
 .page-indicator {
   position: fixed;
   right: 20px;
@@ -169,10 +275,12 @@
     transform: scale(1);
     box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
   }
+
   50% {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(255, 111, 97, 0.7);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
@@ -181,15 +289,20 @@
 
 /* Hiệu ứng rung */
 @keyframes shake {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-5px);
   }
+
   50% {
     transform: translateX(5px);
   }
+
   75% {
     transform: translateX(-5px);
   }
@@ -203,7 +316,8 @@
 /* Thêm hiệu ứng rung khi hover */
 .confirm-button button:hover {
   animation: shake 0.5s;
-  background-color: #e55b50; /* Màu sắc khi hover */
+  background-color: #e55b50;
+  /* Màu sắc khi hover */
 }
 
 /* Form cảm ơn */
